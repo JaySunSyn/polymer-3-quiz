@@ -6,7 +6,7 @@
   "flat": true,
   "scripts": {
     "start": "polymer serve --npm --module-resolution=node -o",
-    "lint": "eslint ./src/.*"
+    "lint": "eslint ./src/*.js"
   },
   "dependencies": {
     "@polymer/iron-ajax": "^3.0.0-pre.12",
