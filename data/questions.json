@@ -1,0 +1,89 @@
+{
+    "data": [
+      {
+        "page": 0,
+        "title": "Page 1",
+        "questions": [
+          {
+            "title": "Desires",
+            "type": "checkbox",
+            "name": "desires",
+            "required": true,
+            "choices": [
+              {
+                "name": "y",
+                "label": "Yes"
+              },
+              {
+                "name": "n",
+                "label": "No"
+              }
+            ]
+          },
+          {
+            "title": "Color choice",
+            "type": "radio",
+            "name": "color",
+            "required": true,
+            "choices": [
+              {
+                "name": "r",
+                "label": "Red"
+              },
+              {
+                "name": "g",
+                "label": "Green"
+              }
+            ]
+          },
+          {
+            "title": "Feelings",
+            "type": "input",
+            "name": "feel",
+            "label": "Describe them",
+            "required": true
+          }
+        ]
+      },
+      {
+        "page": 1,
+        "title": "Page 2",
+        "questions": [
+          {
+            "title": "Time",
+            "type": "checkbox",
+            "name": "time",
+            "choices": [
+              {
+                "name": "day",
+                "label": "Day"
+              },
+              {
+                "name": "night",
+                "label": "Night"
+              }
+            ]
+          },
+          {
+            "title": "Intensity",
+            "type": "radio",
+            "name": "intensity",
+            "choices": [
+              {
+                "name": "l",
+                "label": "Low"
+              },
+              {
+                "name": "m",
+                "label": "Medium"
+              },
+              {
+                "name": "h",
+                "label": "High"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

@@ -5,14 +5,20 @@
   "license": "MIT",
   "flat": true,
   "dependencies": {
+    "@polymer/iron-ajax": "^3.0.0-pre.12",
+    "@polymer/iron-form": "^3.0.0-pre.12",
+    "@polymer/paper-button": "^3.0.0-pre.12",
     "@polymer/paper-checkbox": "^3.0.0-pre.12",
+    "@polymer/paper-input": "^3.0.0-pre.12",
     "@polymer/paper-radio-button": "^3.0.0-pre.12",
     "@polymer/paper-radio-group": "^3.0.0-pre.12",
+    "@polymer/paper-toast": "^3.0.0-pre.12",
     "@polymer/polymer": "^3.0.0-pre.12",
     "@webcomponents/webcomponentsjs": "^1.2.0"
   },
   "resolutions": {
     "@webcomponents/webcomponentsjs": "1.2.0",
-    "@polymer/paper-radio-button": "3.0.0-pre.12"
+    "@polymer/paper-radio-button": "3.0.0-pre.12",
+    "@polymer/iron-ajax": "3.0.0-pre.12"
   }
 }

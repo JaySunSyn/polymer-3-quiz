@@ -7,11 +7,20 @@ class RadioQuestion extends PolymerElement {
     static get properties() {
         return {
             choices: Array,
+            invalid: {
+                type: Boolean,
+                value: false,
+            },
+            required: {
+                type: Boolean,
+            },
+            disabled: {
+                type: Boolean,
+            },
             value: {
                 type: String,
                 value: '',
-                reflectToAttribute: true,
-            }
+            },
         }
     }
     static get template () {
@@ -21,13 +30,23 @@ class RadioQuestion extends PolymerElement {
                 paper-checkbox {
                     margin: 12px;
                 }
+
+                .invalid {
+                    color: red;
+                }
             </style>
             <paper-radio-group selected="{{value}}">
                 <template is="dom-repeat" items="[[choices]]" as="choice">
                     <paper-radio-button name$="[[choice.name]]">[[choice.label]]</paper-radio-button>
                 </template>
+                <span class="invalid" hidden$="[[!invalid]]">*</span>
             </paper-radio-group>
         `;
+    }
+
+    validate() {
+        this.invalid = this.required ? this.value === '' : false;
+        return !this.invalid;
     }
 } 
 customElements.define('radio-question', RadioQuestion);

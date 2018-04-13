@@ -6,11 +6,21 @@ class CheckboxQuestion extends PolymerElement {
     static get properties() {
         return {
             choices: Array,
+            required: {
+                type: Boolean,
+            },
+            invalid: {
+                type: Boolean,
+                value: false,
+            },
+            disabled: {
+                type: Boolean,
+            },
             value: {
                 type: String,
                 value: '',
-                reflectToAttribute: true,
-            }
+                observer: '_valueChanged'
+            },
         }
     }
     static get template () {
@@ -20,11 +30,40 @@ class CheckboxQuestion extends PolymerElement {
                 paper-checkbox {
                     margin: 12px;
                 }
+                .invalid {
+                    color: red;
+                }
             </style>
             <template is="dom-repeat" items="[[choices]]" as="choice">
                 <paper-checkbox data-name$="[[choice.name]]" on-change="_setValue">[[choice.label]]</paper-checkbox>
             </template>
+            <span class="invalid" hidden$="[[!invalid]]">*</span>
         `;
+    }
+
+    validate() {
+        this.invalid = this.required ? this.value === '' : false;
+        return !this.invalid;
+    }
+
+    _getElFromName(name) {
+        return this.shadowRoot.querySelector(`paper-checkbox[data-name="${name}"]`);
+    }
+
+    _valueChanged(value, old) {
+        const cbs = Array.from(this.shadowRoot.querySelectorAll('paper-checkbox'));
+        const toCheck = new Set(value.split(','));
+        const toUncheck = cbs.filter(cb => !toCheck.has(cb.dataset.name));
+
+        toUncheck.forEach(cb => cb ? cb.checked = false : null);
+        
+        toCheck.forEach(name => {
+            const cb = this._getElFromName(name);
+            if (!cb) {
+                return;
+            }
+            cb.checked = true;
+        });
     }
 
     _setValue() {
