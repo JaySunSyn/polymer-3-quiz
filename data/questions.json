@@ -11,17 +11,21 @@
             "required": true,
             "choices": [
               {
-                "name": "y",
-                "label": "Yes"
+                "name": "banana",
+                "label": "Bananas"
               },
               {
-                "name": "n",
-                "label": "No"
+                "name": "coco",
+                "label": "Coconuts"
+              },
+              {
+                "name": "jack",
+                "label": "Jackfruits"
               }
             ]
           },
           {
-            "title": "Color choice",
+            "title": "Color",
             "type": "radio",
             "name": "color",
             "required": true,
@@ -68,6 +72,7 @@
             "title": "Intensity",
             "type": "radio",
             "name": "intensity",
+            "required": true,
             "choices": [
               {
                 "name": "l",

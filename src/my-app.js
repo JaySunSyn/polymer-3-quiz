@@ -1,4 +1,4 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element';
+import {PolymerElement, html} from '@polymer/polymer/polymer-element';
 import '@polymer/polymer/lib/elements/dom-if';
 
 import '@polymer/iron-ajax/iron-ajax';
@@ -8,8 +8,16 @@ import '@polymer/paper-toast/paper-toast';
 
 import './quiz-view.js';
 
+/**
+ * `my-app` Description
+ *
+ * @summary ShortDescription.
+ * @customElement
+ * @polymer
+ * @extends {Polymer.Element}
+ */
 class MyApp extends PolymerElement {
-    static get template () {
+    static get template() {
         return html`
             <style>
                 :host {
@@ -29,6 +37,8 @@ class MyApp extends PolymerElement {
             </iron-ajax>
             <quiz-view
                 data="[[questions.data]]"
+                url="https://jsonplaceholder.typicode.com/posts"
+                method="post"
                 on-submit-success="_success"
                 on-submit-error="_error">
             </quiz-view>
@@ -46,12 +56,11 @@ class MyApp extends PolymerElement {
 
     _error() {
         this.toast.show('Something went wrong ...');
-        this.quiz.reset();
     }
 
     _success() {
         this.toast.show('Yaay, success!');
         this.quiz.reset();
     }
-} 
+}
 customElements.define('my-app', MyApp);

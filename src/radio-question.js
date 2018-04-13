@@ -1,8 +1,16 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element';
+import {PolymerElement, html} from '@polymer/polymer/polymer-element';
 import '@polymer/polymer/lib/elements/dom-repeat';
 import '@polymer/paper-radio-group/paper-radio-group';
 import '@polymer/paper-radio-button/paper-radio-button';
 
+/**
+ * `radio-question` Description
+ *
+ * @summary ShortDescription.
+ * @customElement
+ * @polymer
+ * @extends {Polymer.Element}
+ */
 class RadioQuestion extends PolymerElement {
     static get properties() {
         return {
@@ -21,9 +29,10 @@ class RadioQuestion extends PolymerElement {
                 type: String,
                 value: '',
             },
-        }
+        };
     }
-    static get template () {
+
+    static get template() {
         // Always return an HTMLTemplateElement, not a string literal
         return html`
             <style>
@@ -48,5 +57,5 @@ class RadioQuestion extends PolymerElement {
         this.invalid = this.required ? this.value === '' : false;
         return !this.invalid;
     }
-} 
+}
 customElements.define('radio-question', RadioQuestion);

@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "google"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "max-len": [2, 120, 4],
+    "require-jsdoc": 0,
+    "arrow-parens": 0
+  }
+}

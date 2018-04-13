@@ -1,4 +1,4 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element';
+import {PolymerElement, html} from '@polymer/polymer/polymer-element';
 import '@polymer/polymer/lib/elements/dom-repeat';
 import '@polymer/polymer/lib/elements/dom-if';
 
@@ -10,6 +10,14 @@ import '@polymer/paper-input/paper-input';
 import './checkbox-question.js';
 import './radio-question.js';
 
+/**
+ * `quiz-view` Description
+ *
+ * @summary ShortDescription.
+ * @customElement
+ * @polymer
+ * @extends {Polymer.Element}
+ */
 class QuizView extends PolymerElement {
     static get properties() {
         return {
@@ -38,14 +46,15 @@ class QuizView extends PolymerElement {
             method: {
                 type: String,
                 value: 'post',
-            }
-        }
+            },
+        };
     }
-    static get template () {
+    static get template() {
         return html`
             <style>
                 .container {
                     margin: 24px;
+                    max-width: 600px;
                 }
                 
                 .question {
@@ -56,10 +65,6 @@ class QuizView extends PolymerElement {
                 .space {
                     display: flex;
                     flex: auto;
-                }
-
-                .questions {
-
                 }
 
                 #page {
@@ -141,9 +146,15 @@ class QuizView extends PolymerElement {
                             </template>
                         </section>
                         <section id="footer">
-                            <paper-button id="prevBtn" on-tap="prev">BACK</paper-button>
+                            <paper-button
+                                id="prevBtn"
+                                disabled="[[_prevDisabled]]"
+                                on-tap="prev">BACK</paper-button>
                             <div class="space"></div>
-                            <paper-button id="nxtBtn" on-tap="next" send$="[[_isLastPage(data.length, pageNumber)]]">[[_nextBtnTitle]]</paper-button>
+                            <paper-button
+                                id="nxtBtn"
+                                on-tap="next"
+                                send$="[[_isLastPage(data.length, pageNumber)]]">[[_nextBtnTitle]]</paper-button>
                         </section>
                     </form>
                 </iron-form>
@@ -157,7 +168,7 @@ class QuizView extends PolymerElement {
 
     connectedCallback() {
         super.connectedCallback();
-        this.addEventListener("dom-change", () => {
+        this.addEventListener('dom-change', () => {
             // See https://github.com/PolymerElements/iron-form/issues/263
             this.form._saveInitialValues();
         });
@@ -221,5 +232,5 @@ class QuizView extends PolymerElement {
     _eql(...args) {
         return args.every((val, i, arr) => val === arr[0]);
     }
-} 
+}
 customElements.define('quiz-view', QuizView);

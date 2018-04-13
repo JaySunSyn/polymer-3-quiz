@@ -1,7 +1,15 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element';
+import {PolymerElement, html} from '@polymer/polymer/polymer-element';
 import '@polymer/polymer/lib/elements/dom-repeat';
 import '@polymer/paper-checkbox/paper-checkbox';
 
+/**
+ * `checkbox-question` Description
+ *
+ * @summary ShortDescription.
+ * @customElement
+ * @polymer
+ * @extends {Polymer.Element}
+ */
 class CheckboxQuestion extends PolymerElement {
     static get properties() {
         return {
@@ -19,11 +27,11 @@ class CheckboxQuestion extends PolymerElement {
             value: {
                 type: String,
                 value: '',
-                observer: '_valueChanged'
+                observer: '_valueChanged',
             },
-        }
+        };
     }
-    static get template () {
+    static get template() {
         // Always return an HTMLTemplateElement, not a string literal
         return html`
             <style>
@@ -56,7 +64,7 @@ class CheckboxQuestion extends PolymerElement {
         const toUncheck = cbs.filter(cb => !toCheck.has(cb.dataset.name));
 
         toUncheck.forEach(cb => cb ? cb.checked = false : null);
-        
+
         toCheck.forEach(name => {
             const cb = this._getElFromName(name);
             if (!cb) {
@@ -72,5 +80,5 @@ class CheckboxQuestion extends PolymerElement {
                         .map(c => c.dataset.name)
                         .join(',');
     }
-} 
+}
 customElements.define('checkbox-question', CheckboxQuestion);
